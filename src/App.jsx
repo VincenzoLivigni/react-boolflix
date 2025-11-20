@@ -1,23 +1,36 @@
 import axios from "axios";
 import { useState } from "react"
 
-const initial_Api_Url = "https://api.themoviedb.org/3/search/movie"
+const movies_Api_Url = "https://api.themoviedb.org/3/search/movie"
+const series_Api_Url = "https://api.themoviedb.org/3/search/tv"
 
 function App() {
 
   const [search, setSearch] = useState("")
   const [movies, setMovies] = useState([])
+  const [series, setSeries] = useState([])
 
   function handleSearch() {
     console.log(search);
 
-    const url = `${initial_Api_Url}?api_key=${import.meta.env.VITE_MOVIE_API_KEY}&query=${search}`
-    console.log(url);
+    const movies_url = `${movies_Api_Url}?api_key=${import.meta.env.VITE_MOVIE_API_KEY}&query=${search}`
+    const series_url = `${series_Api_Url}?api_key=${import.meta.env.VITE_SERIES_API_KEY}&query=${search}`
+    console.log(movies_url, series_url);
 
-    axios.get(url)
+    axios.get(movies_url)
       .then((res) => {
         console.log(res);
         setMovies(res.data.results)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+
+
+    axios.get(series_url)
+      .then((res) => {
+        console.log(res);
+        setSeries(res.data.results)
       })
       .catch((err) => {
         console.log(err);
@@ -87,11 +100,10 @@ export default App
 
 
   M2
-  Milestone 2:
-    1. sostituire stringa della "lingua" con la bandiera corrispondente.
-       - recupero le bandiere importandole da "flag-icons" 
-       - creo una variabile contenenti i codici delle bandiere
-       - riporto l'icona al posto della stringa
+  1. sostituire stringa della "lingua" con la bandiera corrispondente.
+     - recupero le bandiere importandole da "flag-icons" 
+     - creo una variabile contenenti i codici delle bandiere
+     - riporto l'icona al posto della stringa
 
     2. aggiungere ricerca per serie tv
        - ripeto i passaggi? nel dubbio...Si
