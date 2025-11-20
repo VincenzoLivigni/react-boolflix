@@ -1,14 +1,25 @@
+import axios from "axios";
 import { useState } from "react"
 
-function App() {
+const initial_Api_Url = "https://api.themoviedb.org/3/search/movie"
 
-  const initial_Api_Url = "https://api.themoviedb.org/3/search/movie"
+function App() {
 
   const [search, setSearch] = useState("")
 
   function handleSearch() {
     console.log(search);
 
+    const url = `${initial_Api_Url}?api_key=${import.meta.env.VITE_MOVIE_API_KEY}&query=${search}`
+    console.log(url);
+
+    axios.get(url)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   return (
@@ -28,10 +39,22 @@ export default App
 
 
 {/*
-  
+  M1
   1. creo input
      - il valore corrisponde a ciò che scrivo
   2. creo bottone
      - al click del bottone viene richiamata la funzione handleSearch che mi fa vedere il risultato in console
+  3. aggiungo url completo
+  4. effettuo chiamata axios
+     - stampo in console
+       - il risultato se la chiamata va a buon fine
+       - l'errore altrimenti
+  5. recupero array film
+  6. map
+     - per ogni fil mostro i valori: titolo, titolo originale, lingua originale, voto
 
+
+  M2
+  M3
+  M4
 */}
