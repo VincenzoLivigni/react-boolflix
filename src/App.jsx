@@ -24,6 +24,21 @@ function App() {
       })
   }
 
+  const flags = {
+    en: "gb",
+    us: "us",
+    it: "it",
+    fr: "fr",
+    es: "es",
+    pt: "pt",
+    de: "de",
+    ru: "ru",
+    gr: "gr",
+    jp: "jp",
+    chi: "cn",
+    ko: "ko"
+  }
+
   return (
     <>
       <h1>Boolflix</h1>
@@ -40,7 +55,7 @@ function App() {
             <>
               <li>{movie.title}</li>
               <li>{movie.original_title}</li>
-              <li>{movie.original_language}</li>
+              <li className={`fi fi-${flags[movie.original_language] || "cx"}`}></li>
               <li>{movie.vote_average}</li>
               <br />
             </>
@@ -72,6 +87,18 @@ export default App
 
 
   M2
+  Milestone 2:
+    1. sostituire stringa della "lingua" con la bandiera corrispondente.
+       - recupero le bandiere importandole da "flag-icons" 
+       - creo una variabile contenenti i codici delle bandiere
+       - riporto l'icona al posto della stringa
+
+    2. aggiungere ricerca per serie tv
+       - ripeto i passaggi? nel dubbio...Si
+       - ma la domanda è come cerco insieme film e serie? 🐔 (...?)
+
+
+
   M3
   M4
 */}
