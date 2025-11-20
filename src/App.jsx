@@ -6,6 +6,7 @@ const initial_Api_Url = "https://api.themoviedb.org/3/search/movie"
 function App() {
 
   const [search, setSearch] = useState("")
+  const [movies, setMovies] = useState([])
 
   function handleSearch() {
     console.log(search);
@@ -16,6 +17,7 @@ function App() {
     axios.get(url)
       .then((res) => {
         console.log(res);
+        setMovies(res.data.results)
       })
       .catch((err) => {
         console.log(err);
@@ -31,6 +33,20 @@ function App() {
         onChange={(e) => setSearch(e.target.value)}
       />
       <button onClick={handleSearch}>Search</button>
+
+      <ul>
+        {
+          movies.map((movie) => (
+            <>
+              <li>{movie.title}</li>
+              <li>{movie.original_title}</li>
+              <li>{movie.original_language}</li>
+              <li>{movie.vote_average}</li>
+              <br />
+            </>
+          ))
+        }
+      </ul>
     </>
   )
 }
@@ -49,8 +65,9 @@ export default App
      - stampo in console
        - il risultato se la chiamata va a buon fine
        - l'errore altrimenti
-  5. recupero array film
-  6. map
+  5. creo variabile di stato "movies"
+     - salvo i risultati nel setter
+  6. mappo l'array
      - per ogni fil mostro i valori: titolo, titolo originale, lingua originale, voto
 
 
