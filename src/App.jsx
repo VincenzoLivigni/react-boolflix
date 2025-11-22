@@ -52,6 +52,8 @@ function App() {
     ko: "ko"
   }
 
+  const searchAll = [...movies, ...series]
+
   return (
     <>
       <h1>Boolflix</h1>
@@ -64,12 +66,12 @@ function App() {
 
       <ul>
         {
-          movies.map((movie) => (
+          searchAll.map((search) => (
             <>
-              <li>{movie.title}</li>
-              <li>{movie.original_title}</li>
-              <li className={`fi fi-${flags[movie.original_language] || "cx"}`}></li>
-              <li>{movie.vote_average}</li>
+              <li>{search.title || search.name}</li>
+              <li>{search.original_title || search.original_name}</li>
+              <li className={`fi fi-${flags[search.original_language] || "cx"}`}></li>
+              <li>{search.vote_average}</li>
               <br />
             </>
           ))
@@ -105,12 +107,29 @@ export default App
      - creo una variabile contenenti i codici delle bandiere
      - riporto l'icona al posto della stringa
 
-    2. aggiungere ricerca per serie tv
-       - ripeto i passaggi? nel dubbio...Si
-       - ma la domanda è come cerco insieme film e serie? 🐔 (...?)
+  2. aggiungere ricerca per serie tv
+     - aggiungo variabile di stato per le serie
+     - effettuo la seconda chiamata axios  
 
-
+  3. creo variabile per richiamare sia l'array per i film sia quelo per le serie "searchAll"
+     - mappo il nuovo array
+     - per la ricerca di titolo: search.title (film) oppure search.name (serie)
+     - per la ricerca di titolo originale: search.original_title (film) oppure search.original_name (serie)
 
   M3
+  1. aggiungere copertina
+     - url base
+     - dimensione
+     - resto
+
+  2. stelle
+     - npm i bootstrap icons
+     - recupero icona da bootstrap
+     - trasformare voto 1 a 10 decimale in un numero intero da 1 a 5
+     - arrotonda per eccesso 
+
   M4
+  1. aggiungere style
+
+
 */}
