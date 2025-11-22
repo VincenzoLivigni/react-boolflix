@@ -1,3 +1,26 @@
 @import url("bootstrap");
 @import url("bootstrap-icons");
 @import "/node_modules/flag-icons/css/flag-icons.min.css";
+
+
+/* main */
+
+.card {
+    border: none
+}
+
+.card-img-top {
+    height: 505px;
+}
+
+img {
+    width: 100%;
+}
+
+.card-body {
+    height: 265px;
+}
+
+p {
+    color: white;
+}

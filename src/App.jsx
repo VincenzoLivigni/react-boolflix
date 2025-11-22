@@ -63,7 +63,7 @@ function App() {
       <header>
         <nav className="bg-dark d-flex justify-content-between align-items-center px-4 py-2">
           <h1 className="text-danger">BOOLFLIX</h1>
-          <form>
+          <form onSubmit={(e) => e.preventDefault()}>
             <input
               type="text"
               value={search}
@@ -74,20 +74,30 @@ function App() {
         </nav>
       </header>
 
-      <ul>
-        {
-          searchAll.map((search) => (
+      <main>
+        <div>
+          <div className="row g-3 p-4 bg-dark">
+            {
+              searchAll.map((search) => (
+                <div key={search.id} className="col-3">
+                  <div className="card">
+                    <div className="card-img-top">
+                      <img src={`${url_img}${url_size}${search.poster_path}`} alt={search.title || search.name} />
+                    </div>
 
-            <>
-              <img src={`${url_img}${url_size}${search.poster_path}`} alt={search.title || search.name} />
-              <li>{search.original_title || search.original_name}</li>
-              <li className={`fi fi-${flags[search.original_language] || "cx"}`}></li>
-              <li>{Math.ceil(search.vote_average / 2)}</li>
-              <br />
-            </>
-          ))
-        }
-      </ul>
+                    <div className="card-body bg-dark">
+                      <p>Title: {search.title || search.name}</p>
+                      <p>Original Title: {search.original_title || search.original_name}</p>
+                      <p>Original Language: <span className={`fi fi-${flags[search.original_language] || "cx"}`}></span></p>
+                      <p>Voto: {Math.ceil(search.vote_average / 2)}</p>
+                    </div>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </main>
     </>
   )
 }
