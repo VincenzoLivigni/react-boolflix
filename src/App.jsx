@@ -54,6 +54,10 @@ function App() {
 
   const searchAll = [...movies, ...series]
 
+  const url_img = "https://image.tmdb.org/t/p/"
+  const url_size = "w342"
+
+
   return (
     <>
       <h1>Boolflix</h1>
@@ -68,7 +72,7 @@ function App() {
         {
           searchAll.map((search) => (
             <>
-              <li>{search.title || search.name}</li>
+              <img src={`${url_img}${url_size}${search.poster_path}`} alt={search.title || search.name} />
               <li>{search.original_title || search.original_name}</li>
               <li className={`fi fi-${flags[search.original_language] || "cx"}`}></li>
               <li>{search.vote_average}</li>
@@ -118,9 +122,9 @@ export default App
 
   M3
   1. aggiungere copertina
-     - url base
-     - dimensione
-     - resto
+     - recupero url img da file
+     - recupero url dimensione da file
+     - recupero poster_path da API
 
   2. stelle
      - npm i bootstrap icons
