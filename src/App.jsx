@@ -60,22 +60,29 @@ function App() {
 
   return (
     <>
-      <h1>Boolflix</h1>
-      <input
-        type="text"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <button onClick={handleSearch}>Search</button>
+      <header>
+        <nav className="bg-dark d-flex justify-content-between align-items-center px-4 py-2">
+          <h1 className="text-danger">BOOLFLIX</h1>
+          <form>
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <button className="btn btn-dark text-danger fw-bold" onClick={handleSearch}>Search</button>
+          </form>
+        </nav>
+      </header>
 
       <ul>
         {
           searchAll.map((search) => (
+
             <>
               <img src={`${url_img}${url_size}${search.poster_path}`} alt={search.title || search.name} />
               <li>{search.original_title || search.original_name}</li>
               <li className={`fi fi-${flags[search.original_language] || "cx"}`}></li>
-              <li>{search.vote_average}</li>
+              <li>{Math.ceil(search.vote_average / 2)}</li>
               <br />
             </>
           ))
@@ -128,9 +135,10 @@ export default App
 
   2. stelle
      - npm i bootstrap icons
-     - recupero icona da bootstrap
+     - recupero icona da bootstrap ( <i class="bi bi-star-fill"></i> )
      - trasformare voto 1 a 10 decimale in un numero intero da 1 a 5
      - arrotonda per eccesso 
+     - le stelle....
 
   M4
   1. aggiungere style
