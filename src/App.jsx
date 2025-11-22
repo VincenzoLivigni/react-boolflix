@@ -80,7 +80,7 @@ function App() {
             {
               searchAll.map((search) => (
                 <div key={search.id} className="col-3">
-                  <div className="card">
+                  <div className="card mb-5">
                     <div className="card-img-top">
                       <img src={`${url_img}${url_size}${search.poster_path}`} alt={search.title || search.name} />
                     </div>
@@ -90,6 +90,7 @@ function App() {
                       <p>Original Title: {search.original_title || search.original_name}</p>
                       <p>Original Language: <span className={`fi fi-${flags[search.original_language] || "cx"}`}></span></p>
                       <p>Voto: {Math.ceil(search.vote_average / 2)}</p>
+                      <p>Overview: {search.overview}</p>
                     </div>
                   </div>
                 </div>
